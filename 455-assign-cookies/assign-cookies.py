@@ -13,9 +13,7 @@ class Solution:
                 content += 1 
                 i += 1
                 j += 1
-            elif g[i] > s[j]:
-                j += 1
             else:
-                i += 1
-
+                j += 1
+            
         return content
