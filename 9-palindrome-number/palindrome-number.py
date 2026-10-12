@@ -9,5 +9,5 @@ class Solution:
             reverse = reverse * 10 + num
             x  = x // 10
 
-        return True if reverse == org else False
+        return reverse == org 
         
