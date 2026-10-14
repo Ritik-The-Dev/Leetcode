@@ -6,11 +6,7 @@ class Solution:
         
         i = 0
         j = 0
-        idx = len(nums1) - len(nums2)
-
-# [1 ,2,2,3,0,0]
-# i = 3
-# j = 1  
+        idx = len(nums1) - len(nums2) 
 
         while i < len(nums1) and j < len(nums2):
             if i == idx:
@@ -25,4 +21,10 @@ class Solution:
                 j += 1
                 idx += 1
         
+        j = len(nums1) - 1
+
+        # while i <= j:
+        #     if nums1[i] > nums1[j]:
+        #         nums1[i] , nums1[j] = nums1[j]  , nums1[i]    
+        #     i += 1
         nums1.sort()
