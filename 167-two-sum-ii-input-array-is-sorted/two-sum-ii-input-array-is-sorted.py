@@ -1,12 +1,16 @@
 class Solution:
     def twoSum(self, numbers: list[int], target: int) -> list[int]:
         
-        hashmap = {}
+        i = 0
+        j = len(numbers) - 1
 
-        for i  in  range(len(numbers)):
-            newTarget = target - numbers[i]
-            if newTarget in hashmap:
-                return  [hashmap[newTarget] , i + 1]
-            hashmap[numbers[i]] = i + 1
+        while i < j :
+            total = numbers[i] + numbers[j]
+            if total == target:
+                return [ i + 1, j + 1]
+            elif total  > target:
+                j  -= 1
+            else:
+                i += 1
 
         return -1
