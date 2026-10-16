@@ -1,11 +1,14 @@
 class Solution:
     def reverseString(self, s: list[str]) -> None:
         
-        i , j = 0 , len(s) - 1
+        i = 0
+        j =  len(s) - 1
 
         while i < j:
-            s[i],s[j] = s[j] , s[i]
+            temp = s[i]
+            s[i] = s[j] 
+            s[j] = temp
             i += 1
             j -= 1
 
-        return s
+        return s    
