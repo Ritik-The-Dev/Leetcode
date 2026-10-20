@@ -8,15 +8,15 @@ class Solution:
 
         result = float('-inf')
 
-        for idx ,right in enumerate(s):
-            freq[right] = freq.get(right , 0) + 1
-            maxLen = max(maxLen , freq[right])
+        for right ,char in enumerate(s):
+            freq[char] = freq.get(char , 0) + 1
+            maxLen = max(maxLen , freq[char])
 
-            while (idx - left + 1) - maxLen > k:
+            while (right - left + 1) - maxLen > k:
                 freq[s[left]] -= 1
                 left += 1
 
-            result = max(result , idx - left + 1)
+            result = max(result , right - left + 1)
 
         return result
 
