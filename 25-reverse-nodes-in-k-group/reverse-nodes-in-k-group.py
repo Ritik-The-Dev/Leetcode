@@ -19,14 +19,15 @@ class Solution:
         
         # Reverse and Apppend
         start = head
-        newHead = None
-        prevTailGroup = None
+        
+        newHead = None # 2 -> 1 -> 3 -> 4 -> 5
+        prevTailGroup = None 
 
         while start and totalLen >= k :
             
             i = 0
 
-            curr = start # 3 -> 4 -> 5
+            curr = start # 3
 
             while i < k:
                 start = start.next
@@ -34,14 +35,14 @@ class Solution:
 
             i = 0
 
-            prev = start  # 2 -> 1 -> 3
-            groupTail = curr
+            prev = start  # 4 -> 3 -> 5
+            groupTail = curr # 3
 
             while curr and i < k:
-                temp = curr.next # 3
-                curr.next = prev 
+                temp = curr.next # 5
+                curr.next = prev # 4 -> 3 -> 5
                 prev = curr
-                curr = temp
+                curr = temp #4
                 i += 1
             
             if not newHead:
