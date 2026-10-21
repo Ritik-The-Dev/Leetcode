@@ -9,7 +9,7 @@ class Solution:
             else:
                 curr.append([i , 1])
             
-            if curr[-1][1] >= k:
+            if curr[-1][1] == k:
                 curr.pop()
 
         result = ""
