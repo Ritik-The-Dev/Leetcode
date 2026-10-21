@@ -10,9 +10,9 @@ class Solution:
         for i in range(m):
             for j in range(n):
                 curr = matrix[i][j]
-                if matrix[i][j] == target:
+                if curr == target:
                     return True
-                elif matrix[i][j] < target:
+                elif curr < target:
                     continue
                 else:
                     break
