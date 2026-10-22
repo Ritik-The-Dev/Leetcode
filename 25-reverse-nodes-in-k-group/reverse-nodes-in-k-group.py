@@ -6,52 +6,50 @@
 class Solution:
     def reverseKGroup(self, head: ListNode | None, k: int) -> ListNode | None:
         
-        if k <= 1 or not head:
-            return head
-
-        # Calculate The length Of The LinkedList
         totalLen = 0
+
         start = head
 
-        while start :
+        while start:
             start = start.next
             totalLen += 1
-        
-        # Reverse and Apppend
+
         start = head
-        
-        newHead = None # 2 -> 1 -> 3 -> 4 -> 5
-        prevTailGroup = None 
 
-        while start and totalLen >= k :
-            
+        newHead = None
+        prevTail = None
+
+        while start and totalLen >= k:
+
+            curr = start
+
             i = 0
-
-            curr = start # 3
 
             while i < k:
                 start = start.next
                 i += 1
 
+            prev = start
+            currTail = curr
+
             i = 0
 
-            prev = start  # 4 -> 3 -> 5
-            groupTail = curr # 3
-
-            while curr and i < k:
-                temp = curr.next # 5
-                curr.next = prev # 4 -> 3 -> 5
+            while i < k:
+                temp = curr.next
+                curr.next = prev 
                 prev = curr
-                curr = temp #4
+                curr = temp
                 i += 1
-            
+
             if not newHead:
                 newHead = prev
-            
-            if prevTailGroup:
-                prevTailGroup.next = prev
 
-            prevTailGroup = groupTail
+            if prevTail:
+                prevTail.next = prev
+
+            prevTail = currTail
+
             totalLen -= k
 
-        return newHead if newHead else Head
+        return newHead    
+
