@@ -4,20 +4,6 @@ class Solution:
         m = len(mat)
         n = len(mat[0])
 
-        # i = 0
-        # j = len(n) - 1
-
-        # row = 0
-
-        # isEven = m % 2 == 0 
-
-        # totalSum = 0
-
-        # while row < m :
-        #     if (isEven and (row == m / 2)):
-        #         totalSum += (mat[row][i] + mat[row][i + 1])
-        #     elif (isEven and row == (m / 2) + 1):
-
         start_col = 0
         end_col = n - 1
 
