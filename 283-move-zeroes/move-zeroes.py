@@ -28,7 +28,4 @@ class Solution:
             while numAfterZero < len(nums) and  nums[numAfterZero] == 0:
                 numAfterZero += 1
 
-        if  numAfterZero < len(nums) and nums[numAfterZero] != 0:
-            nums[firstZero] ,nums[numAfterZero] =  nums[numAfterZero] , nums[firstZero] 
-
         return nums
