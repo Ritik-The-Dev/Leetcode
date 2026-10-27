@@ -1,35 +1,28 @@
 class Solution:
     def maxSubarraySumCircular(self, nums: list[int]) -> int:
         
-        # find the biggest no and smallest no
-
-        # 2 chize calculate kar maximum subarray sum and min subararay sum 
-
-        #  find the max postive and min negative
-        
-        #   either return maximum or sum(nums) - minimum = maximum ? 
-        
         maximum = max(nums)
         minimum = min(nums)
 
-        positiveCurr = 0
-        negativeCurr = 0
+        currMax = 0
+        currMin = 0
 
         for num in nums:
-            tempPos = positiveCurr + num
-            tempNeg = negativeCurr + num
+            tempMax = currMax + num
+            tempMin = currMin + num
 
-            if tempPos < 0:
-                positiveCurr = 0
+            if tempMax < 0:
+                currMax = 0
             else:
-                positiveCurr = tempPos
-                maximum = max(maximum , tempPos)
+                currMax = tempMax
+                maximum = max(maximum , tempMax)
 
-            if tempNeg > 0:
-                negativeCurr = 0
+            if tempMin > 0:
+                currMin = 0
             else:
-                negativeCurr = tempNeg
-                minimum = min(minimum , tempNeg)
+                currMin = tempMin
+                minimum = min(minimum , tempMin)
+
         
         if maximum < 0:
             return maximum
