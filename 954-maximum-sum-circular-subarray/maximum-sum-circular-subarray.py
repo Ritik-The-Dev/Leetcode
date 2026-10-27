@@ -8,22 +8,12 @@ class Solution:
         currMin = 0
 
         for num in nums:
-            tempMax = currMax + num
-            tempMin = currMin + num
+            currMax = max(currMax , 0) + num
+            currMin = min(currMin , 0) + num
 
-            if tempMax < 0:
-                currMax = 0
-            else:
-                currMax = tempMax
-                maximum = max(maximum , tempMax)
+            maximum = max(currMax , maximum)
+            minimum = min(currMin , minimum)
 
-            if tempMin > 0:
-                currMin = 0
-            else:
-                currMin = tempMin
-                minimum = min(minimum , tempMin)
-
-        
         if maximum < 0:
             return maximum
 
