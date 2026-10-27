@@ -1,23 +1,31 @@
 class Solution:
     def minEatingSpeed(self, piles: list[int], h: int) -> int:
         
-        low = 0
+        low = 1
         high = max(piles)
 
-        def canEat(num):
-            totalTime = 0
+        result = float('inf')
+
+        def canEat(speed):
+
+            curr = 0
 
             for pile in piles:
-                totalTime += ceil(pile / num)
+                curr += ceil(pile / speed)
 
-            return totalTime <= h
-
-        while low < high:
-            mid = (low + high) // 2
+                if curr > h:
+                    return False
             
-            if mid > 0 and canEat(mid):
-                high = mid
+            return curr <= h
+
+        while low <= high :
+
+            mid = (low + high) // 2
+
+            if canEat(mid):
+                result = mid
+                high = mid - 1
             else:
                 low = mid + 1
 
-        return low
+        return result
