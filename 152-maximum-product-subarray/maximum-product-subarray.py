@@ -1,17 +1,14 @@
 class Solution:
     def maxProduct(self, nums: list[int]) -> int:
         
-        posProduct = 1 
-        negProduct = 1 
+        posProduct = 1
+        negProduct = 1
 
-        result = float('-inf') 
+        result = float('-inf')
 
         for num in nums:
-            
-            tempPos = posProduct
-            posProduct = max(num , posProduct * num , negProduct * num) # 3
-            negProduct = min(num , negProduct * num , tempPos * num) # -240
+            posProduct ,negProduct = max(num , posProduct * num , negProduct * num) ,  min(num , posProduct * num , negProduct * num)
 
-            result = max(result , posProduct) #20
+            result = max(posProduct , result , negProduct)
 
         return result
