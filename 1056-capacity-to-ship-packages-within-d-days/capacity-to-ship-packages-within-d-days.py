@@ -4,25 +4,27 @@ class Solution:
         low = max(weights)
         high = sum(weights)
 
-        def canShip(maxAllowed):
-            total = 1
-            curr = 0
-            for i in weights:
-                if i + curr > maxAllowed:
-                    total += 1
-                    curr = 0
-                
-                curr += i
-            
-            return total <= days
-
         result = float('inf')
 
+        def canShip(weight):
+            curr = 0    
+            currDays = 1
+
+            for num in weights:
+                if curr + num > weight:
+                    currDays += 1
+                    curr = num
+                else:
+                    curr += num
+
+            return currDays <= days
+
         while low <= high:
+
             mid = (low + high) // 2
 
-            if canShip(mid) :
-                result = min(result , mid)
+            if canShip(mid):
+                result = mid
                 high = mid - 1
             else:
                 low = mid + 1
