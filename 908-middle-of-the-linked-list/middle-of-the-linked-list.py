@@ -6,19 +6,11 @@
 class Solution:
     def middleNode(self, head: ListNode | None) -> ListNode | None:
         
-        n = 0
-
-        pointer = head
-
-        while pointer :
-            pointer = pointer.next
-            n += 1
-
-        pointer = head
-        i = 0
-
-        while i < n // 2:
-            pointer = pointer.next
-            i += 1
-
-        return pointer
+        slow = head
+        fast = head
+        
+        while fast and fast.next :
+            slow = slow.next
+            fast = fast.next.next
+            
+        return slow
