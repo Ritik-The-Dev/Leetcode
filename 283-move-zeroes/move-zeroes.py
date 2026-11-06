@@ -1,31 +1,25 @@
 class Solution:
     def moveZeroes(self, nums: list[int]) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
         
-        firstZero = 0
+        n = len(nums)
 
-        while firstZero < len(nums) and  nums[firstZero] !=  0:
-            firstZero += 1
+        i = 0
+        while i < n and nums[i] != 0 :
+            i += 1
 
-        numAfterZero = firstZero + 1
+        j = i
+        while j < n and nums[j] == 0:
+            j += 1
 
-        while numAfterZero < len(nums) and  nums[numAfterZero] == 0:
-            numAfterZero += 1
+        while j < n:
+            nums[i] , nums[j] = nums[j] , nums[i]
 
-        while numAfterZero < len(nums):
+            i += 1            
+            while i < n and nums[i] != 0 :
+                i += 1
 
-            nums[firstZero]  ,nums[numAfterZero]  =  nums[numAfterZero] , nums[firstZero]
-            
-            firstZero += 1
-
-            while firstZero < len(nums) and  nums[firstZero] !=  0:
-                firstZero += 1
-
-            numAfterZero = firstZero + 1
-
-            while numAfterZero < len(nums) and  nums[numAfterZero] == 0:
-                numAfterZero += 1
+            j = i
+            while j < n and nums[j] == 0:
+                j += 1
 
         return nums
