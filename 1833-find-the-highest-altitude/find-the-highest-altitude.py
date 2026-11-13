@@ -6,7 +6,6 @@ class Solution:
 
         for i in range(len(gain)):
             currentPrefix += gain[i]
-            if currentPrefix > highest:
-                highest = currentPrefix 
+            highest = max(currentPrefix , highest)
         
         return highest
