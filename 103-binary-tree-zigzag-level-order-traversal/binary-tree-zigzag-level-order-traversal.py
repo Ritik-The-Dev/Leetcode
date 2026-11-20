@@ -30,7 +30,7 @@ class Solution:
                 if node.right:
                     queue.append(node.right)
 
-            if i % 2 != 0:
+            if i % 2 == 1:
                 curr.reverse()
 
             result.append(curr)
