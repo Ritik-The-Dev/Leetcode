@@ -15,11 +15,9 @@ class Solution:
                 return node
             
             if node.val > val:
-                result = recursive(node.left)
+                return recursive(node.left)
             else:
-                result = recursive(node.right)
+                return recursive(node.right)
             
-            return result
-
         return recursive(root)
         
