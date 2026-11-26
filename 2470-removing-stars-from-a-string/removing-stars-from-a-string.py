@@ -4,10 +4,12 @@ class Solution:
         stack = []
 
         for char in s :
-            if char == "*" :
-                if stack:
-                    stack.pop()
+            if char == "*" and stack:
+                stack.pop()
             else:
                 stack.append(char)
-            
+
+        while stack and stack[-1] == "*":
+            stack.pop()
+        
         return "".join(stack)
