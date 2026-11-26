@@ -9,7 +9,7 @@ class Solution:
             else:
                 stack.append(char)
 
-        while stack and stack[-1] == "*":
-            stack.pop()
+        # while stack and stack[-1] == "*":
+            # stack.pop()
         
         return "".join(stack)
