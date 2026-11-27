@@ -17,4 +17,4 @@ class Solution:
             give = dp[i - 1]
             dp[i] = max(take , give)
 
-        return dp[-1]
+        return dp[n-1]
