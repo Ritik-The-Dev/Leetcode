@@ -2,20 +2,19 @@ class Solution:
     def rob(self, nums: list[int]) -> int:
         
         n = len(nums)
-        dp = {}
         
-        def recursive(curr):
-            
-            if curr >= n:
-                return 0
+        if n <= 2:
+            return max(nums)
+        
+        dp = [0] * n
 
-            if curr in dp:
-                return dp[curr]
+        dp[0] = nums[0]
+        dp[1] = max(nums[0] , nums[1])
 
-            amount1 = nums[curr] + recursive(curr + 2)
-            amount2 = recursive(curr + 1)
+        for i in range(2 , n):
 
-            dp[curr] = max(amount1 , amount2)            
-            return dp[curr]
-            
-        return recursive(0)
+            take = dp[i - 2] + nums[i]
+            give = dp[i - 1]
+            dp[i] = max(take , give)
+
+        return dp[-1]
