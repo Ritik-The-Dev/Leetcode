@@ -12,10 +12,10 @@ class Solution:
             if curr >= n:
                 return 0
 
-            robed = nums[curr] + recursive(curr + 2)
-            notRobed = recursive(curr + 1)
+            amount1 = nums[curr] + recursive(curr + 2)
+            amount2 = recursive(curr + 1)
             
-            dp[curr] = max(robed , notRobed)
+            dp[curr] = max(amount1 , amount2)
             return dp[curr]
-            
+
         return recursive(0)
