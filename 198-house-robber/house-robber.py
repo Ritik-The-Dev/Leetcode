@@ -19,8 +19,9 @@ class Solution:
             amount1 = recursive(curr + 2 , money + nums[curr])
             amount2 = recursive(curr + 1 , money)
             
-            dp[(curr,money)] = max(amount1 or 0 , amount2 or 0)
+            dp[(curr,money)] = max(amount1 , amount2)
             result = max(result , dp[(curr,money)])
+            return dp[(curr,money)]
             
         recursive(0 , 0)
 
