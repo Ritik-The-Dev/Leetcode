@@ -2,27 +2,20 @@ class Solution:
     def rob(self, nums: list[int]) -> int:
         
         n = len(nums)
-        
-        result = float('-inf')
         dp = {}
         
-        def recursive(curr, money):
+        def recursive(curr):
             
-            nonlocal result
-
             if curr >= n:
-                result = max(result , money)
-                return money
+                return 0
 
-            if (curr,money) in dp:
-                return dp[(curr,money)]
+            if curr in dp:
+                return dp[curr]
 
-            amount1 = recursive(curr + 2 , money + nums[curr])
-            amount2 = recursive(curr + 1 , money)
+            amount1 = nums[curr] + recursive(curr + 2)
+            amount2 = recursive(curr + 1)
+
+            dp[curr] = max(amount1 , amount2)            
+            return dp[curr]
             
-            dp[(curr,money)] = max(amount1 , amount2)
-            return dp[(curr,money)]
-            
-        recursive(0 , 0)
-
-        return result
+        return recursive(0)
