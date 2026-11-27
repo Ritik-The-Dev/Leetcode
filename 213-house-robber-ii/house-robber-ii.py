@@ -29,26 +29,24 @@ class Solution:
 
         if n <= 2:
             return max(nums)
+
+        dp1 = [0] * n
+        dp2 = [0] * n
+
+
+        dp1[0] , dp1[1] = nums[0] , max(nums[0] , nums[1])
+        dp2[1] , dp2[2] = nums[1] , max(nums[1] , nums[2])
+
+        for i in range(2 , n):
             
-        dp = [0] * (n - 1)
-
-        dp[0] = nums[0]
-        dp[1] = max(nums[0] , nums[1])
-
-        for i in range(2 , n - 1):
-            take = nums[i] + dp[i - 2]
-            give = dp[i - 1]
-            dp[i] = max(give, take)
-
-        robFirst = dp[-1]
-        dp = [0] * n
-
-        dp[1] = nums[1]
-        dp[2] = max(nums[1] , nums[2])
-
-        for i in range(3 , n):
-            take = nums[i] + dp[i - 2]
-            give = dp[i - 1]
-            dp[i] = max(give, take)
-        
-        return max(robFirst , dp[-1])
+            if i != 2:
+                take = nums[i] + dp2[i - 2]
+                give = dp2[i - 1]
+                dp2[i] = max(give, take)
+            
+            if i != n - 1:
+                take = nums[i] + dp1[i - 2]
+                give = dp1[i - 1]
+                dp1[i] = max(give, take)
+                
+        return max(dp1[n - 2] , dp2[-1])
