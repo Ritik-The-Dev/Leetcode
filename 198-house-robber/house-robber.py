@@ -5,12 +5,12 @@ class Solution:
         dp = {}
         
         def recursive(curr):
+            
+            if curr >= n:
+                return 0
 
             if curr in dp:
                 return dp[curr]
-
-            if curr >= n:
-                return 0
 
             amount1 = nums[curr] + recursive(curr + 2)
             amount2 = recursive(curr + 1)
