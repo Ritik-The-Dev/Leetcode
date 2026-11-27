@@ -11,6 +11,7 @@ class Solution:
             nonlocal result
 
             if curr >= n:
+                result = max(result , money)
                 return money
 
             if (curr,money) in dp:
@@ -20,7 +21,6 @@ class Solution:
             amount2 = recursive(curr + 1 , money)
             
             dp[(curr,money)] = max(amount1 , amount2)
-            result = max(result , dp[(curr,money)])
             return dp[(curr,money)]
             
         recursive(0 , 0)
