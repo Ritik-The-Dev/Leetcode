@@ -8,7 +8,7 @@ class Solution:
 
         def recursive(dp , curr, end):
 
-            if curr >= end:
+            if curr > end:
                 return 0
 
             if curr in dp:
@@ -20,4 +20,4 @@ class Solution:
             dp[curr] = max(rob,notRob)
             return dp[curr]
 
-        return max(recursive({} , 0 , n - 1) , recursive({} , 1 , n))
+        return max(recursive({} , 0 , n - 2) , recursive({} , 1 , n - 1))
